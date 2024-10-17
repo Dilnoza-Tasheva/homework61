@@ -8,6 +8,7 @@ import { BASE_URL, LIST_URL } from '../../constants.ts';
 
 const Country = () => {
   const [countries, setCountries] = useState<ICountry[]>([]);
+  const [clickCountryCode, setClickCountryCode] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
     try {
@@ -23,9 +24,9 @@ const Country = () => {
   }, [fetchData]);
 
   return (
-    <div className="container mt-4">
-      <CountryList countries={countries}/>
-      <CountryInfo/>
+    <div className="container mt-4 d-flex">
+      <CountryList countries={countries} onSelect={setClickCountryCode}/>
+      <CountryInfo code={clickCountryCode}/>
     </div>
   );
 };
