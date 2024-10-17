@@ -24,9 +24,19 @@ const Country = () => {
   }, [fetchData]);
 
   return (
-    <div className="container mt-4 d-flex justify-content-evenly">
-      <CountryList countries={countries} onSelect={setClickCountryCode}/>
-      <CountryInfo code={clickCountryCode}/>
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-md-4">
+          <div className="bg-primary-subtle border rounded p-3 shadow-sm">
+            <CountryList countries={countries} onSelect={setClickCountryCode}/>
+          </div>
+        </div>
+        <div className="col-md-8">
+          <div className="bg-primary-subtle border rounded p-3 shadow-sm">
+            <CountryInfo code={clickCountryCode}/>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
