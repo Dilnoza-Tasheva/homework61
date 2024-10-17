@@ -9,5 +9,5 @@ export interface APICountry {
   id: number;
   capital: string;
   population: number;
-  borders: string;
+  borders: string[];
 }
