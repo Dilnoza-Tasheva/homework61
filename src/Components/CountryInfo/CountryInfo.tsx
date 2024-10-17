@@ -41,10 +41,20 @@ const CountryInfo: React.FC<Props> = ({code}) => {
   return  country ? (
     <div className="mt-4">
       <h4>{country.name}</h4>
+      <img src={country.flag} alt={country.name} className="img-fluid" style={{width: '150px'}}/>
       <div>
         <p><strong>Capital: </strong>{country.capital}</p>
         <p><strong>Population: </strong>{country.population}</p>
-        <p><strong>Borders with: </strong>{borderCountries.length > 0 ? borderCountries : 'No bordering countries'}</p>
+        <strong>Borders with: </strong>
+        <ul>
+          {borderCountries.length > 0 ? (
+            borderCountries.map((borderCountry, index) => (
+              <li key={index}>{borderCountry}</li>
+            ))
+          ) : (
+            <li>No bordering countries</li>
+          )}
+        </ul>
       </div>
     </div>
   ) : (

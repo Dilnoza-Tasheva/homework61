@@ -10,4 +10,5 @@ export interface APICountry {
   capital: string;
   population: number;
   borders: string[];
+  flag: string;
 }
