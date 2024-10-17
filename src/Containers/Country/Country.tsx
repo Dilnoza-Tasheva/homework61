@@ -24,7 +24,7 @@ const Country = () => {
   }, [fetchData]);
 
   return (
-    <div className="container mt-4 d-flex">
+    <div className="container mt-4 d-flex justify-content-evenly">
       <CountryList countries={countries} onSelect={setClickCountryCode}/>
       <CountryInfo code={clickCountryCode}/>
     </div>

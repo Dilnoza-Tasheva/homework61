@@ -8,23 +8,24 @@ interface Props {
   code: string;
 }
 
-const URL_TO_GET_ONE_COUNTRY = BASE_URL + '/alpha/';
+const URL_TO_GET_ONE_COUNTRY = BASE_URL + 'alpha/';
 
 const CountryInfo: React.FC<Props> = ({code}) => {
   const [country, setCountry] = useState<APICountry | null>(null);
 
   useEffect(() => {
     const getCountryByCode = async () => {
-      const responseReq: {data: APICountry, status: number} = await axios.get<APICountry>(URL_TO_GET_ONE_COUNTRY + code);
+      const responseReq = await axios.get<APICountry>(URL_TO_GET_ONE_COUNTRY + code);
       setCountry(responseReq.data);
     };
 
-    if (code !== null) void getCountryByCode();
-    console.log('Display country code = ', code);
+    if (code) {
+      void getCountryByCode();
+    }
   }, [code]);
 
   return  country && (
-    <div>
+    <div className="mt-4">
       <h4>{country.name}</h4>
       <div>
         <p>Country information: {country.capital}</p>
